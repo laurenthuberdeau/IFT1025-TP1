@@ -1,5 +1,9 @@
 public abstract class Case {
 	protected char representation;
+
+	public Case(char representation) {
+		this.representation = representation;
+	}
 	
 	/**
 	* Retourne la représentation de la case (un seul caractère)
@@ -35,6 +39,6 @@ public abstract class Case {
 	* @return Un symbole ASCII compris entre ’:’ et ’~’
 	*/
 	public static char getRandomSymbole() {
-	return (char) (Math.random() * (126 - 58) + 58);
+		return (char) (Math.random() * (126 - 58) + 58);
 	}
 }

@@ -1,11 +1,46 @@
 public class Robot {
-	private String name;
+
+	public static final char representation = '#';
+
+	private String nom;
 	private Point position;
-	private int keyCount = 0;
-	private boolean hasTeleporter = false;
+	private int nbCle = 0;
+	private boolean hasTeleporteur = false;
 	
 	public Robot(String name, Point startPos) {
-		this.name = name;
+		this.nom = name;
 		this.position = startPos;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public Point getPosition() {
+		return position;
+	}
+
+	public void setPosition(Point position) {
+		this.position = position;
+	}
+
+	public boolean hasTeleporteur() {
+		return hasTeleporteur;
+	}
+
+	public void ramasseTeleporteur() {
+		hasTeleporteur = true;
+	}
+
+	public int getNbCle() {
+		return nbCle;
+	}
+
+	public boolean utiliseCle() {
+		if (nbCle > 0) {
+			nbCle--;
+			return true;
+		}
+		return false;
 	}
 }

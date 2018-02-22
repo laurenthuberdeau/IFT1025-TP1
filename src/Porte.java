@@ -1,15 +1,20 @@
 public class Porte extends Case {
 
+	private static final char representationFermee = '!';
+	private static final char representationOuvert = ' ';
+
+	public Porte() {
+		super(representationFermee);
+	}
+
 	@Override
 	public boolean interactionPossible(Robot robot) {
-		// TODO Auto-generated method stub
-		return false;
+		return robot.getNbCle() != 0;
 	}
 
 	@Override
 	public void interagir(Robot robot) {
-		// TODO Auto-generated method stub
-
+		this.representation = representationOuvert;
 	}
 
 }

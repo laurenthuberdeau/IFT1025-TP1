@@ -1,15 +1,18 @@
 public class Cle extends Case {
 
+	private static final char representation = '$';
+
+	public Cle() {
+		super(representation);
+	}
+
 	@Override
 	public boolean interactionPossible(Robot robot) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public void interagir(Robot robot) {
-		// TODO Auto-generated method stub
 
 	}
-
 }
