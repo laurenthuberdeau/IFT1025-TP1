@@ -20,7 +20,7 @@ public class RobotFindsKitten {
 
 	public RobotFindsKitten() {
 		grille = new Grille(4,2,10,10, 10);
-		robot = new Robot("R.O.B", new Point(2, 2));
+		robot = new Robot("R.O.B", grille.randomEmptyCell());
 		scanner = new Scanner(System.in);
 	}
 
