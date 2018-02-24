@@ -38,7 +38,7 @@ public class Grille {
 	
 	public boolean deplacementPossible(Robot robot, int x, int y) {
 		Case item = getItem(x, y);
-		return item.interactionPossible(robot);
+		return item == null || item.interactionPossible(robot);
 	}
 	
 	public void afficher(Robot robot) {
