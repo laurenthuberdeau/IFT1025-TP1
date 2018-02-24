@@ -15,5 +15,4 @@ public class Mur extends Case {
     public void interagir(Robot robot) {
 
     }
-
 }

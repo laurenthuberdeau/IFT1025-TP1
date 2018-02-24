@@ -8,7 +8,8 @@ public class RobotFindsKitten {
 	private Scanner scanner;
 
 	public static void main(String[] args) {
-		new RobotFindsKitten().play();
+		RobotFindsKitten game = new RobotFindsKitten();
+		game.play();
 	}
 
 	public RobotFindsKitten() {
@@ -31,8 +32,8 @@ public class RobotFindsKitten {
 	// Prints welcome message
 	private void showWelcome() {
 		System.out.println(
-				"       Bienvenue dans RobotFindsKitten\n" +
-						"Super Dungeon Master 3000 Ultra Turbo Edition !");
+			"       Bienvenue dans RobotFindsKitten\n" +
+			"Super Dungeon Master 3000 Ultra Turbo Edition !");
 	}
 
 	// Shows You found kitten...

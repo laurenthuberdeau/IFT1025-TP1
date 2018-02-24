@@ -19,4 +19,3 @@ public class Cle extends Case {
         }
     }
 }
-

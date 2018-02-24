@@ -38,15 +38,14 @@ public class Grille {
 	
 	public boolean deplacementPossible(Robot robot, int x, int y) {
 		Case item = getItem(x, y);
-		return !(item instanceof Mur ||
-				(item instanceof Porte) && (item.getActif()) && (robot.getNbCle() == 0));
+		return item.interactionPossible(robot);
 	}
 	
 	public void afficher(Robot robot) {
 		String accum = "";
 		for (int y = nbCaseHauteur - 1; y >= 0; y--) {
 			for (int x = 0; x < nbCaseLargeur; x++) {
-				if (robot.getPosition().getX() == x && robot.getPosition().getY() == y) {
+				if (robot.getPosition().egal(x, y)) {
 					accum += Robot.representation;
 				} else {
 					Case item = getItem(x, y);
