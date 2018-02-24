@@ -33,13 +33,13 @@ public class RobotFindsKitten {
 	private void showWelcome() {
 		System.out.println(
 			"       Bienvenue dans RobotFindsKitten\n" +
-			"Super Dungeon Master 3000 Ultra Turbo Edition !");
+			"Super Dungeon Master 3000 Ultra Turbo Edition !\n");
 	}
 
 	// Shows You found kitten...
 	private void showWinMessage() {
 		String message = "You found kitten! Way to go, robot.";
-		message += grille.getKitten().getNom() + "<3" + robot.getNom();
+		message += "\n" + grille.getKitten().getNom() + " <3 " + robot.getNom();
 		System.out.println(message);
 	}
 
