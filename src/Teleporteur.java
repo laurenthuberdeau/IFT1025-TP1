@@ -1,7 +1,6 @@
 public class Teleporteur extends Case {
 
-    // SYMBOLE T POUR FACILITER TESTING
-    private static final char representation = 'T'; // getRandomSymbole();
+    private static final char representation = getRandomSymbole();
 
     public Teleporteur() {
         super(representation);

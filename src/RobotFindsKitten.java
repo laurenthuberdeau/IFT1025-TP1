@@ -11,13 +11,6 @@ public class RobotFindsKitten {
 		new RobotFindsKitten().play();
 	}
 
-	// Prints welcome message
-	public static void showWelcome() {
-		System.out.println(
-				"       Bienvenue dans RobotFindsKitten\n" +
-				"Super Dungeon Master 3000 Ultra Turbo Edition !");
-	}
-
 	public RobotFindsKitten() {
 		grille = new Grille(2,2,12,6, 10);
 		robot = new Robot("R.O.B.", grille.randomEmptyCell());
@@ -27,12 +20,26 @@ public class RobotFindsKitten {
 	//  Game enty point (REPL: Read Eval Print Loop)
 	public void play() {
 		showWelcome();
-		while (!grille.getKitten().getTrouve()) {
+		while (!grille.getKitten().estTrouve()) {
 			showBoard();
 			char move = getMove();
 			movePlayer(move);
 		}
-		System.exit(0);
+		showWinMessage();
+	}
+
+	// Prints welcome message
+	private void showWelcome() {
+		System.out.println(
+				"       Bienvenue dans RobotFindsKitten\n" +
+						"Super Dungeon Master 3000 Ultra Turbo Edition !");
+	}
+
+	// Shows You found kitten...
+	private void showWinMessage() {
+		String message = "You found kitten! Way to go, robot.";
+		message += grille.getKitten().getNom() + "<3" + robot.getNom();
+		System.out.println(message);
 	}
 
 	// Shows map with objects (Kitten included) and player on it
@@ -43,8 +50,10 @@ public class RobotFindsKitten {
 	// Waits for player input. Null => No move
 	private char getMove() {
 		String allowedChars = "asdw";
-		if (robot.hasTeleporteur()){allowedChars+='t';}
+		if (robot.hasTeleporteur()) allowedChars+='t';
+
 		Character moveChar = null;
+
 		do {
 			showPrompt();
 			String entree = scanner.next();

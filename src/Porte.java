@@ -8,7 +8,7 @@ public class Porte extends Case {
 
     @Override
     public boolean interactionPossible(Robot robot) {
-        return (robot.getNbCle() != 0) && (this.actif);
+        return robot.getNbCle() != 0 && this.actif;
     }
 
     @Override

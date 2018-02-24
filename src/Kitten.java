@@ -16,15 +16,14 @@ public class Kitten extends Case {
 
     @Override
     public void interagir(Robot robot) {
-        System.out.println("You found kitten! Way to go, robot.\n" + nom + " <3 " + robot.getNom());
-        this.trouve = true;
+        trouve = true;
     }
 
     public String getNom() {
         return nom;
     }
 
-    public boolean getTrouve() {
+    public boolean estTrouve() {
         return trouve;
     }
 }

@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Grille {
 	private Case[][] grille;
-	private int nbCaseLargeur, nbCaseHauteur, nbrPiecesX, nbrPiecesY, largeurPiece, hauteurPiece;
+	private int nbCaseLargeur, nbCaseHauteur;
 
 	private Kitten kitten;
 
@@ -11,21 +11,14 @@ public class Grille {
 	public Grille(int nbrPiecesX, int nbrPiecesY, 
 				  int largeurPiece, int hauteurPiece,
 				  int nbrNonKitten) {
-		this.nbrPiecesX=nbrPiecesX;
-		this.nbrPiecesY=nbrPiecesY;
-		this.largeurPiece=largeurPiece;
-		this.hauteurPiece=hauteurPiece;
-		this.nbCaseLargeur = nbrPiecesX * largeurPiece + 1;
-		this.nbCaseHauteur = nbrPiecesY * hauteurPiece + 1;
-		creerGrille();
-		remplirGrille(nbrNonKitten);
+		creerGrille(nbrPiecesX, nbrPiecesY, largeurPiece, hauteurPiece);
+		remplirGrille(nbrNonKitten, nbrPiecesX, nbrPiecesY, largeurPiece, hauteurPiece);
 	}
 
 	public Kitten getKitten() {
 		return kitten;
 	}
 
-	
 	public Point randomEmptyCell() {
 		// Strategy: Pick a point and check if empty. If empty, return, else restart
 		Random random = new Random();
@@ -72,10 +65,10 @@ public class Grille {
 
 	// Helper methods
 
-
 	// Crée l'object grille, les murs et les portes
-
-	private void creerGrille(){
+	private void creerGrille(int nbrPiecesX, int nbrPiecesY, int largeurPiece, int hauteurPiece){
+		this.nbCaseLargeur = nbrPiecesX * largeurPiece + 1;
+		this.nbCaseHauteur = nbrPiecesY * hauteurPiece + 1;
 
 		this.grille = new Case[nbCaseHauteur][nbCaseLargeur];
 
@@ -115,32 +108,30 @@ public class Grille {
 		setItem(new Point(x,y), item);
 	}
 
-	private void remplirGrille(int nbElement) {
-		placerCle(); // En premier, car ne verifie pas si case est vide.
+	private void remplirGrille(int nbElement, int nbrPiecesX, int nbrPiecesY, int largeurPiece, int hauteurPiece) {
+		placerCle(nbrPiecesX, nbrPiecesY, largeurPiece, hauteurPiece); // En premier, car ne verifie pas si case est vide.
+		placerKitten();
+		placerTeleporteur();
 		for (int i = 0; i < nbElement; i++) {
 			NonKitten item = new NonKitten(NonKitten.getRandomSymbole(), NonKitten.getRandomDescription());
 			setItem(randomEmptyCell(), item);
 		}
-		placerKitten();
-		placerTeleporteur();
 	}
 
-	private void placerKitten() {
-
-		//kitten = new Kitten(Kitten.getRandomSymbole(), "Feu Cumulus");
-		kitten = new Kitten('K', "Feu Cumulus"); // SYMBOLE K POUR FACILITER TESTING
-
-		setItem(randomEmptyCell(), kitten);
-	}
-
-	private void placerCle() { // Une cle par piece
-		for (int i = 0; i<nbrPiecesX;i++){
-			for (int j = 0; j<nbrPiecesY;j++){
-				int coordX=(int)(i*largeurPiece+Math.random()*(largeurPiece-1)+1);
-				int coordY=(int)(j*hauteurPiece+Math.random()*(hauteurPiece-1)+1);
+	// Une clé par pièce
+	private void placerCle(int nbrPiecesX, int nbrPiecesY, int largeurPiece, int hauteurPiece) {
+		for (int i = 0; i < nbrPiecesX; i++){
+			for (int j = 0; j < nbrPiecesY; j++){
+				int coordX = (int) (i * largeurPiece+Math.random() * (largeurPiece - 1) + 1);
+				int coordY = (int) (j * hauteurPiece+Math.random() * (hauteurPiece - 1) + 1);
 				setItem(coordX, coordY, new Cle());
 			}
 		}
+	}
+
+	private void placerKitten() {
+		kitten = new Kitten(Kitten.getRandomSymbole(), "Feu Cumulus");
+		setItem(randomEmptyCell(), kitten);
 	}
 
 	private void placerTeleporteur() {
