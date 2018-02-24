@@ -14,8 +14,14 @@ public class Cle extends Case {
     @Override
     public void interagir(Robot robot) {
         if (this.actif) {
-            robot.ramasseCle();
             this.desactiver();
+
+            robot.ramasseCle();
+            System.out.println("You found a key.");
+            try {
+                // Bloque ici et attends une entrée pour permettre au joueur de voir le message
+                System.in.read();
+            } catch (Exception e) {  }
         }
     }
 }

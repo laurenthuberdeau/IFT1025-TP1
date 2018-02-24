@@ -72,7 +72,7 @@ public class RobotFindsKitten {
 	private void showPrompt() {
 		String promptText = robot.getNom() + " [" + robot.getNbCle() + "]";
 		if (robot.hasTeleporteur())
-			promptText += "T";
+			promptText += " T ";
 		promptText += "> ";
 
 		// Important! No newline after!
