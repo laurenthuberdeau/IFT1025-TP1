@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+/**
+ * Cette classe est la classe orchestrant le jeu.
+ * Elle comprend le main et le REPL.
+ */
+
 public class RobotFindsKitten {
 
 	private Grille grille;
@@ -12,13 +17,18 @@ public class RobotFindsKitten {
 		game.play();
 	}
 
+	/**
+	 * Constructeur du Jeu par défaut.
+	 */
 	public RobotFindsKitten() {
 		grille = new Grille(2,2,12,6, 10);
 		robot = new Robot("R.O.B.", grille.randomEmptyCell());
 		scanner = new Scanner(System.in);
 	}
 
-	//  Game enty point (REPL: Read Eval Print Loop)
+	/**
+	 * Point d'entrée dans le REPL
+	 */
 	public void play() {
 		showWelcome();
 		while (!grille.getKitten().estTrouve()) {
@@ -29,26 +39,42 @@ public class RobotFindsKitten {
 		showWinMessage();
 	}
 
-	// Prints welcome message
+	/**
+	 * Affiche message d'accueil.
+	 */
 	private void showWelcome() {
 		System.out.println(
 			"       Bienvenue dans RobotFindsKitten\n" +
 			"Super Dungeon Master 3000 Ultra Turbo Edition !\n");
 	}
 
-	// Shows You found kitten...
+
+	/**
+	 * Affiche message de victoire
+	 * Le message a la forme "You found kitten! Way to go, robot. \n {Kitten.getNom()} <3 {Robot.getNom()}"
+	 * Sur deux lignes
+	 */
 	private void showWinMessage() {
 		String message = "You found kitten! Way to go, robot.";
 		message += "\n" + grille.getKitten().getNom() + " <3 " + robot.getNom();
 		System.out.println(message);
 	}
 
-	// Shows map with objects (Kitten included) and player on it
+	/**
+	 * Affiche la planche de jeu
+	 */
 	private void showBoard() {
 		grille.afficher(robot);
 	}
 
 	// Waits for player input. Null => No move
+
+	/**
+	 * Attend une entrée de la part du joueur
+	 * Vérifie que l'entrée est valide et qu'elle peut être jouée
+	 * Partie READ du REPL
+	 * @return Le mouvement sous forme de char minuscule.
+	 */
 	private char getMove() {
 		String allowedChars = "asdw";
 		if (robot.hasTeleporteur()) allowedChars+='t';
@@ -68,18 +94,25 @@ public class RobotFindsKitten {
 		return moveChar;
 	}
 
-	// Shows {PlayerName} [{KeyCount}] >
+	/**
+	 * Affiche le début de la ligne
+	 * Le message a la forme "{Robot.getNom()} [{Robot.getNbCle()}] T > "
+	 */
 	private void showPrompt() {
 		String promptText = robot.getNom() + " [" + robot.getNbCle() + "]";
 		if (robot.hasTeleporteur())
 			promptText += " T ";
 		promptText += "> ";
 
-		// Important! No newline after!
+		// Important! Ne pas utiliser println
 		System.out.print(promptText);
 	}
 
-	// Moves player if possible and/or (inspect object or open door)
+	/**
+	 * Modifie la position du joueur.
+	 * Fait l'interaction entre le joueur et l'objet sous lui si nécessaire
+	 * @param move : Mouvement retourné par this.getMove()
+	 */
 	private void movePlayer(char move) {
 		Point newPos = getNewRobotPosition(move);
 		if (grille.deplacementPossible(robot, newPos.getX(), newPos.getY())) {
@@ -88,6 +121,12 @@ public class RobotFindsKitten {
 		}
 	}
 
+	/**
+	 * Modifie la position du joueur
+	 * @param  move : Mouvement retourné par this.getMove()
+	 * @return Point : Position modifiée du Robot après mouvement
+	 * @throws IllegalArgumentException Si move ne fait pas parti de "asdwt"
+	 */
 	private Point getNewRobotPosition(char move) {
 		Point robotPos = robot.getPosition();
 		switch (move) {
