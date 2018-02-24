@@ -19,20 +19,20 @@ public class RobotFindsKitten {
 	}
 
 	public RobotFindsKitten() {
-		grille = new Grille(4,2,10,10, 10);
-		robot = new Robot("R.O.B", grille.randomEmptyCell());
+		grille = new Grille(2,2,12,6, 10);
+		robot = new Robot("R.O.B.", grille.randomEmptyCell());
 		scanner = new Scanner(System.in);
 	}
 
 	//  Game enty point (REPL: Read Eval Print Loop)
 	public void play() {
 		showWelcome();
-		while (!checkWin()) {
+		while (!grille.getKitten().getTrouve()) {
 			showBoard();
 			char move = getMove();
 			movePlayer(move);
 		}
-		showWinMessage();
+		System.exit(0);
 	}
 
 	// Shows map with objects (Kitten included) and player on it
@@ -40,16 +40,10 @@ public class RobotFindsKitten {
 		grille.afficher(robot);
 	}
 
-	// Shows You found kitten...
-	private void showWinMessage() {
-		String message = "You found kitten! Way to go, robot.";
-		message += grille.getKitten().getNom() + "<3" + robot.getNom();
-		System.out.println(message);
-	}
-
-	// Waits for player input. Null => No move (Teleporter)
+	// Waits for player input. Null => No move
 	private char getMove() {
 		String allowedChars = "asdw";
+		if (robot.hasTeleporteur()){allowedChars+='t';}
 		Character moveChar = null;
 		do {
 			showPrompt();
@@ -66,7 +60,7 @@ public class RobotFindsKitten {
 
 	// Shows {PlayerName} [{KeyCount}] >
 	private void showPrompt() {
-		String promptText = robot.getNom() + "[" + robot.getNbCle() + "]";
+		String promptText = robot.getNom() + " [" + robot.getNbCle() + "]";
 		if (robot.hasTeleporteur())
 			promptText += "T";
 		promptText += "> ";
@@ -84,11 +78,6 @@ public class RobotFindsKitten {
 		}
 	}
 
-	// Checks if player has found Kitten
-	private boolean checkWin() {
-		return false;
-	}
-
 	private Point getNewRobotPosition(char move) {
 		Point robotPos = robot.getPosition();
 		switch (move) {
@@ -100,6 +89,8 @@ public class RobotFindsKitten {
 				return new Point(robotPos.getX(), robotPos.getY() - 1);
 			case 'w':
 				return new Point(robotPos.getX(), robotPos.getY() + 1);
+			case 't':
+				return grille.randomEmptyCell();
 			default:
 				throw new IllegalArgumentException("Move isn't valid: " + move);
 		}

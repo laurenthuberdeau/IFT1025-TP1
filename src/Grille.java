@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Grille {
 	private Case[][] grille;
-	private int nbCaseLargeur, nbCaseHauteur;
+	private int nbCaseLargeur, nbCaseHauteur, nbrPiecesX, nbrPiecesY, largeurPiece, hauteurPiece;
 
 	private Kitten kitten;
 
@@ -11,8 +11,14 @@ public class Grille {
 	public Grille(int nbrPiecesX, int nbrPiecesY, 
 				  int largeurPiece, int hauteurPiece,
 				  int nbrNonKitten) {
-		creerGrille(nbrPiecesX, nbrPiecesY, largeurPiece, hauteurPiece);
-		remplirGrille(nbrNonKitten, nbrPiecesX * nbrPiecesY * 5 / 4);
+		this.nbrPiecesX=nbrPiecesX;
+		this.nbrPiecesY=nbrPiecesY;
+		this.largeurPiece=largeurPiece;
+		this.hauteurPiece=hauteurPiece;
+		this.nbCaseLargeur = nbrPiecesX * largeurPiece + 1;
+		this.nbCaseHauteur = nbrPiecesY * hauteurPiece + 1;
+		creerGrille();
+		remplirGrille(nbrNonKitten);
 	}
 
 	public Kitten getKitten() {
@@ -39,7 +45,8 @@ public class Grille {
 	
 	public boolean deplacementPossible(Robot robot, int x, int y) {
 		Case item = getItem(x, y);
-		return item == null || item.interactionPossible(robot);
+		return !(item instanceof Mur ||
+				(item instanceof Porte) && (item.getActif()) && (robot.getNbCle() == 0));
 	}
 	
 	public void afficher(Robot robot) {
@@ -60,8 +67,7 @@ public class Grille {
 	
 	public void interagir(Robot robot) {
 		Case item = getItem(robot.getPosition());
-		if (item != null)
-			item.interagir(robot);
+		if (item != null){ item.interagir(robot); }
 	}
 
 	// Helper methods
@@ -69,11 +75,7 @@ public class Grille {
 
 	// Crée l'object grille, les murs et les portes
 
-	private void creerGrille(int nbrPiecesX, int nbrPiecesY,
-	                         int largeurPiece, int hauteurPiece){
-
-		this.nbCaseLargeur = nbrPiecesX * largeurPiece + 1; // + nbrPiecesX + 1;
-		this.nbCaseHauteur = nbrPiecesY * hauteurPiece + 1; // + nbrPiecesY + 1;
+	private void creerGrille(){
 
 		this.grille = new Case[nbCaseHauteur][nbCaseLargeur];
 
@@ -91,7 +93,6 @@ public class Grille {
 					else
 						piece = new Mur();
 				}
-
 
 				setItem(x, y, piece);
 			}
@@ -114,24 +115,37 @@ public class Grille {
 		setItem(new Point(x,y), item);
 	}
 
-	private void remplirGrille(int nbElement, int nbCle) {
+	private void remplirGrille(int nbElement) {
+		placerCle(); // En premier, car ne verifie pas si case est vide.
 		for (int i = 0; i < nbElement; i++) {
 			NonKitten item = new NonKitten(NonKitten.getRandomSymbole(), NonKitten.getRandomDescription());
 			setItem(randomEmptyCell(), item);
 		}
 		placerKitten();
-		placerCle(nbCle);
+		placerTeleporteur();
 	}
 
 	private void placerKitten() {
-		kitten = new Kitten(Kitten.getRandomSymbole(), "Feu Cumulus");
+
+		//kitten = new Kitten(Kitten.getRandomSymbole(), "Feu Cumulus");
+		kitten = new Kitten('K', "Feu Cumulus"); // SYMBOLE K POUR FACILITER TESTING
+
 		setItem(randomEmptyCell(), kitten);
 	}
 
-	private void placerCle(int nbCle) {
-		for (int i = 0; i < nbCle; i++) {
-			Cle item = new Cle();
-			setItem(randomEmptyCell(), item);
+	private void placerCle() { // Une cle par piece
+		for (int i = 0; i<nbrPiecesX;i++){
+			for (int j = 0; j<nbrPiecesY;j++){
+				int coordX=(int)(i*largeurPiece+Math.random()*(largeurPiece-1)+1);
+				int coordY=(int)(j*hauteurPiece+Math.random()*(hauteurPiece-1)+1);
+				setItem(coordX, coordY, new Cle());
+			}
 		}
 	}
+
+	private void placerTeleporteur() {
+		Teleporteur teleporteur = new Teleporteur();
+		setItem(randomEmptyCell(), teleporteur);
+	}
+
 }

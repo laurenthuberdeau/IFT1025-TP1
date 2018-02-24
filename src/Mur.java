@@ -1,19 +1,19 @@
 public class Mur extends Case {
 
-	private static final char representation = '%';
+    private static final char representation = '%';
 
-	public Mur() {
-		super(representation);
-	}
+    public Mur() {
+        super(representation);
+    }
 
-	@Override
-	public boolean interactionPossible(Robot robot) {
-		return false;
-	}
+    @Override
+    public boolean interactionPossible(Robot robot) {
+        return false;
+    }
 
-	@Override
-	public void interagir(Robot robot) {
+    @Override
+    public void interagir(Robot robot) {
 
-	}
+    }
 
 }
