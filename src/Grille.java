@@ -22,18 +22,19 @@ public class Grille {
 	public Point randomEmptyCell() {
 		// Strategy: Pick a point and check if empty. If empty, return, else restart
 		Random random = new Random();
-		Point point = null;
+		int essaisMax = 100;
 
 		do {
 			int x = random.nextInt(nbCaseLargeur);
 			int y = random.nextInt(nbCaseHauteur);
 
 			if (getItem(x, y) == null)
-				point = new Point(x, y);
+				return new Point(x, y);
 
-		} while (point == null);
+			essaisMax--;
+		} while (essaisMax >= 0);
 
-		return point;
+		throw new IllegalStateException("Failed to find empty position. Board is probably full.");
 	}
 	
 	public boolean deplacementPossible(Robot robot, int x, int y) {
