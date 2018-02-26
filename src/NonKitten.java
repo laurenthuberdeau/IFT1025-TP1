@@ -1,5 +1,12 @@
+/**
+ * Représente un objet auquel correspond une description textuelle aléatoire
+ * La description est présentée au joueur lorsqu'un robot interagit avec l'objet
+ */
 public class NonKitten extends Case {
 
+    /**
+     * Un tableau de String contenant toutes les descriptions possibles
+     */
     public static String[] descriptions = new String[]{
             "I pity the fool who mistakes me for kitten!\", sez Mr. T.",
             "That's just an old tin can.",
@@ -411,21 +418,43 @@ public class NonKitten extends Case {
 
     private String description;
 
+    /**
+     * Construit un objet NonKitten avec une représentation et une description donnée
+     *
+     * @param representation Un caractère qui représentera l'objet dans la grille de jeu
+     * @param description Un String qui décrit l'objet
+     */
     public NonKitten(char representation, String description) {
         super(representation);
         this.description = description;
     }
 
+    /**
+     * Définie l'interaction du robot avec l'objet
+     *
+     * @param robot Le robot qui interagirait avec l'objet
+     * @return Un booléen toujours vrai
+     */
     @Override
     public boolean interactionPossible(Robot robot) {
         return true;
     }
 
+    /**
+     * Définie l'interaction d'un robot avec l'objet; affiche la description de l'objet
+     *
+     * @param robot Le robot qui interagit avec l'objet
+     */
     @Override
     public void interagir(Robot robot) {
         System.out.println(this.description);
     }
 
+    /**
+     * Retourne une description aléatoire parmi la liste de toutes les descriptions possible
+     *
+     * @return Un String qui décrit un objet
+     */
     public static String getRandomDescription() {
         return descriptions[(int) (Math.random() * descriptions.length)];
     }
