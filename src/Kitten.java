@@ -30,8 +30,8 @@ public class Kitten extends Case {
     }
 
     /**
-     * Définie l'interaction d'un robot avec le chaton
-     * Change l'état du chaton pour indiquer qu'il a été trouvé
+     * Définie l'interaction d'un robot avec le chaton;
+     * change l'état du chaton pour indiquer qu'il a été trouvé
      *
      * @param robot Le robot qui interagit avec le chaton
      */

@@ -24,10 +24,10 @@ public class Cle extends Case {
     }
 
     /**
-     * Définie l'interaction du robot avec la clé
-     * Si la clé est active (pas encore ramassée), alors elle est désactivée et la méthode ramasseCle du robot
-     * est appelée pour mettre à jour son état (nombre de clés)
-     * Un message est affichée pour informer le joueur
+     * Définie l'interaction du robot avec la clé:
+     * si la clé est active (pas encore ramassée), alors elle est désactivée et la méthode ramasseCle du robot
+     * est appelée pour mettre à jour son état (nombre de clés);
+     * un message est affichée pour informer le joueur
      *
      * @param robot Le robot qui interagit avec la clé
      */

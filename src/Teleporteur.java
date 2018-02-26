@@ -1,6 +1,6 @@
 /**
- * Représente un téléporteur qui est ramassée par le robot s'il interagit avec
- * Sa représentation est aléatoire
+ * Représente un téléporteur qui est ramassée par le robot s'il interagit avec;
+ * sa représentation est aléatoire
  */
 public class Teleporteur extends Case {
 
@@ -25,10 +25,10 @@ public class Teleporteur extends Case {
     }
 
     /**
-     * Définie l'interaction du robot avec le téléporteur
-     * Si le téléporteur est actif (pas encore ramassée), alors il est désactivée
-     * et la méthode ramasseTeleporteur du robot est appelée pour mettre à jour son état (possession d'un téléporteur)
-     * Un message est affichée pour informer le joueur
+     * Définie l'interaction du robot avec le téléporteur:
+     * si le téléporteur est actif (pas encore ramassée), alors il est désactivée
+     * et la méthode ramasseTeleporteur du robot est appelée pour mettre à jour son état (possession d'un téléporteur);
+     * un message est affichée pour informer le joueur
      *
      * @param robot Le robot qui interagit avec le téléporteur
      */

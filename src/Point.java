@@ -1,5 +1,5 @@
 /**
- * Simple POJO représentant une paire d'int (Isomorphique à Paire<Int, Int>)
+ * Simple POJO représentant une paire d'int (Isomorphique à Paire &lt;Int, Int&gt;)
  * Représente soit une position ou un déplacement (Vecteur 2D)
  */
 

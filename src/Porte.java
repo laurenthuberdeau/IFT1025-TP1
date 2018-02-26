@@ -25,8 +25,8 @@ public class Porte extends Case {
 
     /**
      * Définie l'interaction du robot avec la porte:
-     * Si la porte est active (barrée), elle est désactivée
-     * La méthode utiliseCle du robot est appelée afin de mettre à jour son état (nombre de clés)
+     * si la porte est active (barrée), elle est désactivée;
+     * la méthode utiliseCle du robot est appelée afin de mettre à jour son état (nombre de clés)
      *
      * @param robot Le robot qui interagit avec la porte
      */

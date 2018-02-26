@@ -1,5 +1,5 @@
 /**
- * Représente un robot avec un nom et une position, et qui peut détenir un téléporteur et un certain nombre de clés.
+ * Représente un robot avec un nom et une position, et qui peut détenir un téléporteur et un certain nombre de clés
  */
 public class Robot {
 

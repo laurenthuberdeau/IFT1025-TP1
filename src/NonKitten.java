@@ -1,6 +1,6 @@
 /**
- * Représente un objet auquel correspond une description textuelle aléatoire
- * La description est présentée au joueur lorsqu'un robot interagit avec l'objet
+ * Représente un objet auquel correspond une description textuelle aléatoire;
+ * la description est présentée au joueur lorsqu'un robot interagit avec l'objet
  */
 public class NonKitten extends Case {
 

@@ -1,6 +1,6 @@
 /**
- * Représente une case dans la grille de jeu.
- * Cette case a une représentation sous la forme d'un caractère ASCII et elle peut être active ou inactive.
+ * Représente une case dans la grille de jeu;
+ * cette case a une représentation sous la forme d'un caractère ASCII et elle peut être active ou inactive
  */
 public abstract class Case {
 
@@ -19,8 +19,8 @@ public abstract class Case {
     }
 
     /**
-     * Désactive la case, en changeant son état pour indiquer que l'interaction avec le joueur n'est plus possible.
-     * Elle sera maintenant représentée par une case vide dans la grille ASCII.
+     * Désactive la case, en changeant son état pour indiquer que l'interaction avec le joueur n'est plus possible;
+     * elle sera maintenant représentée par une case vide dans la grille ASCII.
      */
     public void desactiver() {
         this.representation = representationInactif;
@@ -60,7 +60,7 @@ public abstract class Case {
     /**
      * Interaction entre la case et le robot
      *
-     * @param robot
+     * @param robot Le robot qui interagit avec la porte
      */
     public abstract void interagir(Robot robot);
 
