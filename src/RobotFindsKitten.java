@@ -17,16 +17,30 @@ public class RobotFindsKitten {
 	private Scanner scanner;
 
 	public static void main(String[] args) {
-		RobotFindsKitten game = new RobotFindsKitten();
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.print("Quel est le nom du robot? ");
+		String nomRobot = scanner.nextLine().trim();
+		System.out.print("Quel est le nom du chaton? ");
+		String nomKitten = scanner.nextLine().trim();
+		if (nomRobot.isEmpty())
+			nomRobot = "R.O.B";
+		if (nomKitten.isEmpty())
+			nomKitten = "Feu Cumulus";
+
+		RobotFindsKitten game = new RobotFindsKitten(nomRobot, nomKitten);
 		game.play();
 	}
 
 	/**
 	 * Constructeur du Jeu par défaut.
 	 */
-	public RobotFindsKitten() {
+	public RobotFindsKitten(String nomRobot, String nomKitten) {
 		grille = new Grille(2,2,12,6, 10);
-		robot = new Robot("R.O.B.", grille.randomEmptyCell());
+		grille.getKitten().setNom(nomKitten);
+
+		robot = new Robot(nomRobot, grille.randomEmptyCell());
+
 		scanner = new Scanner(System.in);
 	}
 

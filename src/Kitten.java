@@ -50,6 +50,15 @@ public class Kitten extends Case {
     }
 
     /**
+     * Donne un nom au chaton
+     *
+     * @param nom Nom qu'on lui donne
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    /**
      * Vérifie si le chaton a été trouvé
      *
      * @return Un booléen qui est vrai si le chaton a été trouvé
