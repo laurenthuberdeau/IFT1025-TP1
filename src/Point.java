@@ -7,6 +7,8 @@ public class Point {
 	private final int x, y;
 
 	/**
+	 * Constructeur
+	 *
 	 * @param x Composante horizontale du Point
 	 * @param y Composante verticale du Point
 	 */
@@ -17,6 +19,7 @@ public class Point {
 
 	/**
 	 * Vérifie l'égalité de valeurs (Non référence) entre deux Points
+	 *
 	 * @param x Composante horizontale du Point comparé
 	 * @param y Composante verticale du Point comparé
 	 * @return Vrai ssi les composants sont égaux aux arguments
@@ -27,6 +30,7 @@ public class Point {
 
 	/**
 	 * Simple accesseur de la composante horizontale
+	 *
 	 * @return Composante horizontale
 	 */
 	public int getX() {
@@ -35,6 +39,7 @@ public class Point {
 
 	/**
 	 * Simple accesseur de la composante verticale
+	 *
 	 * @return Composante verticale
 	 */
 	public int getY() {

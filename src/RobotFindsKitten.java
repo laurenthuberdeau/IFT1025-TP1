@@ -16,6 +16,11 @@ public class RobotFindsKitten {
 
 	private Scanner scanner;
 
+	/**
+	 * Point d'entrée du programme
+	 *
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 
@@ -34,6 +39,9 @@ public class RobotFindsKitten {
 
 	/**
 	 * Constructeur du Jeu par défaut.
+	 *
+	 * @param nomRobot Nom à donner au robot
+	 * @param nomKitten Nom à donner au Kitten
 	 */
 	public RobotFindsKitten(String nomRobot, String nomKitten) {
 		grille = new Grille(2,2,12,6, 10);
@@ -91,6 +99,7 @@ public class RobotFindsKitten {
 	 * Attend une entrée de la part du joueur
 	 * Vérifie que l'entrée est valide et qu'elle peut être jouée
 	 * Partie READ du REPL
+	 *
 	 * @return Le mouvement sous forme de char minuscule.
 	 */
 	private char getMove() {
@@ -129,6 +138,7 @@ public class RobotFindsKitten {
 	/**
 	 * Modifie la position du joueur.
 	 * Fait l'interaction entre le joueur et l'objet sous lui si nécessaire
+	 *
 	 * @param move : Mouvement retourné par this.getMove()
 	 */
 	private void movePlayer(char move) {
@@ -141,6 +151,7 @@ public class RobotFindsKitten {
 
 	/**
 	 * Modifie la position du joueur
+	 *
 	 * @param  move : Mouvement retourné par this.getMove()
 	 * @return Point : Position modifiée du Robot après mouvement
 	 * @throws IllegalArgumentException Si move ne fait pas parti de "asdwt"

@@ -38,8 +38,8 @@ public class Teleporteur extends Case {
     public void interagir(Robot robot) {
         if (this.actif) {
             this.desactiver();
-
             robot.ramasseTeleporteur();
+
             System.out.println("You found the teleporter. Press T to teleport anywhere on map.");
             // Bloque ici et attends une entrée pour permettre au joueur de voir le message
             new Scanner(System.in).nextLine();
