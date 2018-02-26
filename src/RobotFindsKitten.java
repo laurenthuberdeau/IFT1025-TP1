@@ -1,6 +1,10 @@
 import java.util.Scanner;
 
 /**
+ * IFT1025 - Programmation 2
+ * TP 1 : Jeu en console Robot Finds Kitten
+ * Par Simon Chabot et Laurent Huberdeau
+ *
  * Cette classe est la classe orchestrant le jeu.
  * Elle comprend le main et le REPL.
  */
