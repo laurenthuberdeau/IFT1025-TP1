@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Représente une clé qui est ramassée par le robot s'il interagit avec
  */
@@ -38,10 +40,8 @@ public class Cle extends Case {
 
             robot.ramasseCle();
             System.out.println("You found a key.");
-            try {
-                // Bloque ici et attends une entrée pour permettre au joueur de voir le message
-                System.in.read();
-            } catch (Exception e) {  }
+            // Bloque ici et attends une entrée pour permettre au joueur de voir le message
+            new Scanner(System.in).nextLine();
         }
     }
 }
