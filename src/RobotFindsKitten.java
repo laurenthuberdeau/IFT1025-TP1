@@ -107,7 +107,7 @@ public class RobotFindsKitten {
 
 		do {
 			showPrompt();
-			String entree = scanner.next();
+			String entree = scanner.next().trim();
 			if (entree.length() == 1
 				&& allowedChars.indexOf(entree.charAt(0)) != -1)
 				moveChar = entree.charAt(0);

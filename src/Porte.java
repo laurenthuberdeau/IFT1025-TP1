@@ -32,7 +32,7 @@ public class Porte extends Case {
      */
     @Override
     public void interagir(Robot robot) {
-        if (this.estActif()) {
+        if (this.estActif() && robot.getNbCle() > 0) {
             robot.utiliseCle();
             this.desactiver();
         }
