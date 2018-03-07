@@ -20,7 +20,7 @@ public class Porte extends Case {
      */
     @Override
     public boolean interactionPossible(Robot robot) {
-        return robot.getNbCle() != 0 && this.actif;
+        return robot.getNbCle() != 0 && this.estActif();
     }
 
     /**
@@ -32,7 +32,7 @@ public class Porte extends Case {
      */
     @Override
     public void interagir(Robot robot) {
-        if (this.actif) {
+        if (this.estActif()) {
             robot.utiliseCle();
             this.desactiver();
         }

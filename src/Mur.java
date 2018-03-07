@@ -30,6 +30,6 @@ public class Mur extends Case {
      */
     @Override
     public void interagir(Robot robot) {
-
+        // NOP
     }
 }

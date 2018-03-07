@@ -2,17 +2,15 @@ import java.util.Scanner;
 
 /**
  * Représente un téléporteur qui est ramassée par le robot s'il interagit avec;
- * sa représentation est aléatoire
+ * sa représentation est aléatoire.
  */
 public class Teleporteur extends Case {
-
-    private static final char representation = getRandomSymbole();
 
     /**
      * Construit un téléporteur
      */
     public Teleporteur() {
-        super(representation);
+        super(getRandomSymbole());
     }
 
     /**
@@ -23,7 +21,7 @@ public class Teleporteur extends Case {
      */
     @Override
     public boolean interactionPossible(Robot robot) {
-        return (this.actif);
+        return this.estActif();
     }
 
     /**
@@ -36,7 +34,7 @@ public class Teleporteur extends Case {
      */
     @Override
     public void interagir(Robot robot) {
-        if (this.actif) {
+        if (this.estActif()) {
             this.desactiver();
             robot.ramasseTeleporteur();
 

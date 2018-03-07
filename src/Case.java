@@ -4,9 +4,10 @@
  */
 public abstract class Case {
 
+    private static final char representationInactif = ' ';
+
     protected char representation;
-    protected boolean actif;
-    protected static char representationInactif = ' ';
+    private boolean actif;
 
     /**
      * Construit une case avec la représentation donnée
@@ -32,7 +33,7 @@ public abstract class Case {
      *
      * @return Un booléen qui est vrai si la case est active
      */
-    public boolean getActif() {
+    public boolean estActif() {
         return actif;
     }
 

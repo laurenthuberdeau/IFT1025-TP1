@@ -19,7 +19,7 @@ public class RobotFindsKitten {
 	/**
 	 * Point d'entrée du programme
 	 *
-	 * @param args
+	 * @param args Executable arguments
 	 */
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
@@ -74,7 +74,6 @@ public class RobotFindsKitten {
 			"Super Dungeon Master 3000 Ultra Turbo Edition !\n");
 	}
 
-
 	/**
 	 * Affiche message de victoire
 	 * Le message a la forme "You found kitten! Way to go, robot. \n {Kitten.getNom()} <3 {Robot.getNom()}"
@@ -92,8 +91,6 @@ public class RobotFindsKitten {
 	private void showBoard() {
 		grille.afficher(robot);
 	}
-
-	// Waits for player input. Null => No move
 
 	/**
 	 * Attend une entrée de la part du joueur

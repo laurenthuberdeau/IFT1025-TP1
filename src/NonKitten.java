@@ -7,7 +7,7 @@ public class NonKitten extends Case {
     /**
      * Un tableau de String contenant toutes les descriptions possibles
      */
-    public static String[] descriptions = new String[]{
+    private static String[] descriptions = new String[]{
             "I pity the fool who mistakes me for kitten!\", sez Mr. T.",
             "That's just an old tin can.",
             "It's an altar to the horse god.",

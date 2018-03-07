@@ -22,7 +22,7 @@ public class Cle extends Case {
      */
     @Override
     public boolean interactionPossible(Robot robot) {
-        return this.actif;
+        return this.estActif();
     }
 
     /**
@@ -35,7 +35,7 @@ public class Cle extends Case {
      */
     @Override
     public void interagir(Robot robot) {
-        if (this.actif) {
+        if (this.estActif()) {
             this.desactiver();
 
             robot.ramasseCle();
